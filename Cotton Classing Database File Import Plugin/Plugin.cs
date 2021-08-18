@@ -12,7 +12,7 @@ namespace CottonClassingPlugin
     public class Plugin : IPlugin
     {
         string IPlugin.Name => "Cotton Classing DB File Plugin";
-        string IPlugin.Version => "0.1";
+        string IPlugin.Version => "1.0";
         string IPlugin.Owner => "AgGateway";
         public IList<IError> Errors => throw new NotImplementedException();
 

@@ -22,7 +22,7 @@ namespace CottonClassingPlugin.DataMappers
             colorGrade.Selector = "A_OFFICIAL_COLOR_GRADE";
             colorGrade.Description = "The color grade of the cotton sample.";
             colorGrade.Value = ndbRecord.OfficialColorGrade;
-            colorGrade.ValueType = OMCodeComponentValueTypeEnum.String;
+            colorGrade.ValueType = OMCodeComponentValueTypeEnum.Integer;
             colorGrade.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(colorGrade);
 
@@ -32,7 +32,7 @@ namespace CottonClassingPlugin.DataMappers
             stapleLength.Selector = "A_STAPLE_LENGTH";
             stapleLength.Description = "Fiber length expressed in 32nds of an inch.";
             stapleLength.Value = ndbRecord.StapleLength;
-            stapleLength.ValueType = OMCodeComponentValueTypeEnum.String;
+            stapleLength.ValueType = OMCodeComponentValueTypeEnum.Integer;
             stapleLength.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(stapleLength);
 
@@ -42,7 +42,7 @@ namespace CottonClassingPlugin.DataMappers
             micronaire.Selector = "A_MICRONAIRE";
             micronaire.Description = "Micronaire is a measure of the cotton’s fineness and is reported to the nearest tenth.";
             micronaire.Value = ndbRecord.Micronaire;
-            micronaire.ValueType = OMCodeComponentValueTypeEnum.String;
+            micronaire.ValueType = OMCodeComponentValueTypeEnum.Double;
             micronaire.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(micronaire);
 
@@ -52,7 +52,7 @@ namespace CottonClassingPlugin.DataMappers
             strength.Selector = "A_STENGTH";
             strength.Description = "Strength reported is the force in grams required to break a bundle of fibers one tex unit in size.";
             strength.Value = ndbRecord.Strength;
-            strength.ValueType = OMCodeComponentValueTypeEnum.String;
+            strength.ValueType = OMCodeComponentValueTypeEnum.Double;
             strength.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(strength);
 
@@ -62,7 +62,7 @@ namespace CottonClassingPlugin.DataMappers
             leafGrade.Selector = "A_LEAF_GRADE";
             leafGrade.Description = "Leaf refers to particles of the cotton plant’s leaf which remain in the lint after the ginning process.";
             leafGrade.Value = ndbRecord.LeafGrade;
-            leafGrade.ValueType = OMCodeComponentValueTypeEnum.String;
+            leafGrade.ValueType = OMCodeComponentValueTypeEnum.Integer;
             leafGrade.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(leafGrade);
 
@@ -72,7 +72,7 @@ namespace CottonClassingPlugin.DataMappers
             extraneousMatter.Selector = "A_EXTRANEOUS_MATTER";
             extraneousMatter.Description = "Extraneous matter is any substance in the cotton other than fiber or leaf.";
             extraneousMatter.Value = ndbRecord.ExtraneousMatter;
-            extraneousMatter.ValueType = OMCodeComponentValueTypeEnum.String;
+            extraneousMatter.ValueType = OMCodeComponentValueTypeEnum.Integer;
             extraneousMatter.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(extraneousMatter);
 
@@ -82,7 +82,7 @@ namespace CottonClassingPlugin.DataMappers
             HVIColorGrade.Selector = "A_HVI_COLOR_GRADE";
             HVIColorGrade.Description = "The same color grade as the official color grade.";
             HVIColorGrade.Value = ndbRecord.HVIColorGrade;
-            HVIColorGrade.ValueType = OMCodeComponentValueTypeEnum.String;
+            HVIColorGrade.ValueType = OMCodeComponentValueTypeEnum.Integer;
             HVIColorGrade.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(HVIColorGrade);
 
@@ -92,7 +92,7 @@ namespace CottonClassingPlugin.DataMappers
             colorQuadrant.Selector = "A_HVI_COLOR_GRADE";
             colorQuadrant.Description = "Color grade subdivisions are reported as Color Quadrants.";
             colorQuadrant.Value = ndbRecord.ColorQuadrant;
-            colorQuadrant.ValueType = OMCodeComponentValueTypeEnum.String;
+            colorQuadrant.ValueType = OMCodeComponentValueTypeEnum.Integer;
             colorQuadrant.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(colorQuadrant);
 
@@ -102,7 +102,7 @@ namespace CottonClassingPlugin.DataMappers
             RD.Selector = "A_HVI_COLOR_GRADE";
             RD.Description = "HVI Rd (% reflectance).";
             RD.Value = ndbRecord.RD;
-            RD.ValueType = OMCodeComponentValueTypeEnum.String;
+            RD.ValueType = OMCodeComponentValueTypeEnum.Double;
             RD.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(RD);
 
@@ -112,7 +112,7 @@ namespace CottonClassingPlugin.DataMappers
             B.Selector = "A_HVI_YELLOWNESS";
             B.Description = "HVI +b (yellowness).";
             B.Value = ndbRecord.B;
-            B.ValueType = OMCodeComponentValueTypeEnum.String;
+            B.ValueType = OMCodeComponentValueTypeEnum.Double;
             B.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(B);
 
@@ -122,7 +122,7 @@ namespace CottonClassingPlugin.DataMappers
             nonLintContent.Selector = "A_TRASH_PERCENT_AREA";
             nonLintContent.Description = "The percent of the sample surface covered by trash particles as determined by the instrument to the nearest tenth.";
             nonLintContent.Value = ndbRecord.NonLintContent;
-            nonLintContent.ValueType = OMCodeComponentValueTypeEnum.String;
+            nonLintContent.ValueType = OMCodeComponentValueTypeEnum.Integer;
             nonLintContent.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(nonLintContent);
 
@@ -132,7 +132,7 @@ namespace CottonClassingPlugin.DataMappers
             fiberLength.Selector = "A_FIBER_LENGTH";
             fiberLength.Description = "Fiber length expressed in 100ths of an inch.";
             fiberLength.Value = ndbRecord.FiberLength;
-            fiberLength.ValueType = OMCodeComponentValueTypeEnum.String;
+            fiberLength.ValueType = OMCodeComponentValueTypeEnum.Integer;
             fiberLength.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(fiberLength);
 
@@ -142,7 +142,7 @@ namespace CottonClassingPlugin.DataMappers
             lengthUniformity.Selector = "A_LENGTH_UNIFORMITY_INDEX";
             lengthUniformity.Description = "The ratio between the mean length and the upperhalf mean length of the fibers, expressed as a percentage.";
             lengthUniformity.Value = ndbRecord.LengthUniformity;
-            lengthUniformity.ValueType = OMCodeComponentValueTypeEnum.String;
+            lengthUniformity.ValueType = OMCodeComponentValueTypeEnum.Integer;
             lengthUniformity.ValueUoMCode = "";
             obsCollection.CodeComponents.Add(lengthUniformity);
 
