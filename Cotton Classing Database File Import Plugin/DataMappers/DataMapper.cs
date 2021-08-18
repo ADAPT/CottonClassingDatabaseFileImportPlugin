@@ -26,9 +26,9 @@ namespace CottonClassingPlugin.DataMappers
 
             //Create an ADAPT container and load list object
             ContextItem parentContextItem = new ContextItem();
-            var _loads = new List<AgGateway.ADAPT.ApplicationDataModel.LoggedData.Load>();
-            var _obsCollections = new List<AgGateway.ADAPT.ApplicationDataModel.Documents.ObsCollection>();
-            var _obs = new List<AgGateway.ADAPT.ApplicationDataModel.Documents.Obs>();
+            var loads = new List<AgGateway.ADAPT.ApplicationDataModel.LoggedData.Load>();
+            var myOobsCollections = new List<AgGateway.ADAPT.ApplicationDataModel.Documents.ObsCollection>();
+            var obs = new List<AgGateway.ADAPT.ApplicationDataModel.Documents.Obs>();
 
             //Import the NDB Records
             foreach (NDBRecord ndb in myDataModel.NDBData.NDBRecords)
@@ -52,21 +52,21 @@ namespace CottonClassingPlugin.DataMappers
                 load = NDBRecordMapper.MapNDBRecord(ndb, load);
 
                 //We create a new Observation Collection for each unique load
-                obsCollection = NDBRecordMapper.MapNDBRecordObsCollection(ndb, _obs, load.Id.ReferenceId, obsCollection, obsDataset, adm);
-                _obsCollections.Add(obsCollection);
+                obsCollection = NDBRecordMapper.MapNDBRecordObsCollection(ndb, obs, load.Id.ReferenceId, obsCollection, obsDataset, adm);
+                myOobsCollections.Add(obsCollection);
                 obsDataset.ObsCollectionIds.Add(obsCollection.Id.ReferenceId);
                 load.ObsCollectionId = obsCollection.Id.ReferenceId;
 
-                _loads.Add(load);
+                loads.Add(load);
             }
 
             var _obsDataSets = new List<ObsDataset>();
             _obsDataSets.Add(obsDataset);
             adm.Documents.ObsDatasets = _obsDataSets;
-            adm.Documents.ObsCollections = _obsCollections;
-            adm.Documents.Obs = _obs;
+            adm.Documents.ObsCollections = myOobsCollections;
+            adm.Documents.Obs = obs;
 
-            adm.Documents.Loads = _loads;
+            adm.Documents.Loads = loads;
         }
 
         public static UniqueId GetNativeID(BaseObject obj)

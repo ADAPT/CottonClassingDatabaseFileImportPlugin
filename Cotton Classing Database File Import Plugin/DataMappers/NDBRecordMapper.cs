@@ -14,134 +14,156 @@ namespace CottonClassingPlugin.DataMappers
     {
         public static AgGateway.ADAPT.ApplicationDataModel.Documents.ObsCollection MapNDBRecordObsCollection(PublisherDataModel.NDBRecord ndbRecord, List<AgGateway.ADAPT.ApplicationDataModel.Documents.Obs> _obs, int obsCollectionID, AgGateway.ADAPT.ApplicationDataModel.Documents.ObsCollection obsCollection, ObsDataset obsDataset, ApplicationDataModel adm)
         {
-            int obsIndex = 1;
             obsCollection.OMSourceId = obsCollectionID;
 
-            Obs OfficialColorGrade = new Obs();
-            OfficialColorGrade.OMSourceId = obsIndex; obsIndex++;
-            OfficialColorGrade.UoMCode = "USDA-COT-OfficialColorGrade";
-            OfficialColorGrade.Value = ndbRecord.OfficialColorGrade;
-            obsCollection.ObsIds.Add(OfficialColorGrade.Id.ReferenceId);
-            _obs.Add(OfficialColorGrade);
+            ObsCodeComponent colorGrade = new ObsCodeComponent();
+            colorGrade.ComponentCode = "A_YLD_USDA_1GOSG_OFFICIAL_COLOR_GRADE";
+            colorGrade.ComponentType = "OBSERVED_PROPERTY";
+            colorGrade.Selector = "A_OFFICIAL_COLOR_GRADE";
+            colorGrade.Description = "The color grade of the cotton sample.";
+            colorGrade.Value = ndbRecord.OfficialColorGrade;
+            colorGrade.ValueType = OMCodeComponentValueTypeEnum.String;
+            colorGrade.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(colorGrade);
 
-            Obs StapleLength = new Obs();
-            StapleLength.OMSourceId = obsIndex; obsIndex++;
-            StapleLength.UoMCode = "USDA-COT-StapleLength";
-            StapleLength.Value = ndbRecord.StapleLength;
-            obsCollection.ObsIds.Add(StapleLength.Id.ReferenceId);
-            _obs.Add(StapleLength);
+            ObsCodeComponent stapleLength = new ObsCodeComponent();
+            stapleLength.ComponentCode = "A_YLD_USDA_1GOSG_STAPLE_LENGTH";
+            stapleLength.ComponentType = "OBSERVED_PROPERTY";
+            stapleLength.Selector = "A_STAPLE_LENGTH";
+            stapleLength.Description = "Fiber length expressed in 32nds of an inch.";
+            stapleLength.Value = ndbRecord.StapleLength;
+            stapleLength.ValueType = OMCodeComponentValueTypeEnum.String;
+            stapleLength.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(stapleLength);
 
-            Obs Micronaire = new Obs();
-            Micronaire.OMSourceId = obsIndex; obsIndex++;
-            Micronaire.UoMCode = "USDA-COT-Micronaire";
-            Micronaire.Value = ndbRecord.Micronaire;
-            obsCollection.ObsIds.Add(Micronaire.Id.ReferenceId);
-            _obs.Add(Micronaire);
+            ObsCodeComponent micronaire = new ObsCodeComponent();
+            micronaire.ComponentCode = "A_YLD_1GOSG_MICRONAIRE";
+            micronaire.ComponentType = "OBSERVED_PROPERTY";
+            micronaire.Selector = "A_MICRONAIRE";
+            micronaire.Description = "Micronaire is a measure of the cotton’s fineness and is reported to the nearest tenth.";
+            micronaire.Value = ndbRecord.Micronaire;
+            micronaire.ValueType = OMCodeComponentValueTypeEnum.String;
+            micronaire.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(micronaire);
 
-            Obs Strength = new Obs();
-            Strength.OMSourceId = obsIndex; obsIndex++;
-            Strength.UoMCode = "USDA-COT-Strength";
-            Strength.Value = ndbRecord.Strength;
-            obsCollection.ObsIds.Add(Strength.Id.ReferenceId);
-            _obs.Add(Strength);
+            ObsCodeComponent strength = new ObsCodeComponent();
+            strength.ComponentCode = "A_YLD_USDA_1GOSG_STRENGTH";
+            strength.ComponentType = "OBSERVED_PROPERTY";
+            strength.Selector = "A_STENGTH";
+            strength.Description = "Strength reported is the force in grams required to break a bundle of fibers one tex unit in size.";
+            strength.Value = ndbRecord.Strength;
+            strength.ValueType = OMCodeComponentValueTypeEnum.String;
+            strength.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(strength);
 
-            Obs LeafGrade = new Obs();
-            LeafGrade.OMSourceId = obsIndex; obsIndex++;
-            LeafGrade.UoMCode = "USDA-COT-LeafGrade";
-            LeafGrade.Value = ndbRecord.LeafGrade;
-            obsCollection.ObsIds.Add(LeafGrade.Id.ReferenceId);
-            _obs.Add(LeafGrade);
+            ObsCodeComponent leafGrade = new ObsCodeComponent();
+            leafGrade.ComponentCode = "A_YLD_USDA_1GOSG_LEAF_GRADE";
+            leafGrade.ComponentType = "OBSERVED_PROPERTY";
+            leafGrade.Selector = "A_LEAF_GRADE";
+            leafGrade.Description = "Leaf refers to particles of the cotton plant’s leaf which remain in the lint after the ginning process.";
+            leafGrade.Value = ndbRecord.LeafGrade;
+            leafGrade.ValueType = OMCodeComponentValueTypeEnum.String;
+            leafGrade.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(leafGrade);
 
-            Obs ExtraneousMatter = new Obs();
-            ExtraneousMatter.OMSourceId = obsIndex; obsIndex++;
-            ExtraneousMatter.UoMCode = "USDA-COT-ExtraneousMatter";
-            ExtraneousMatter.Value = ndbRecord.ExtraneousMatter;
-            obsCollection.ObsIds.Add(ExtraneousMatter.Id.ReferenceId);
-            _obs.Add(ExtraneousMatter);
+            ObsCodeComponent extraneousMatter = new ObsCodeComponent();
+            extraneousMatter.ComponentCode = "A_YLD_USDA_1GOSG_EXTRANEOUS_MATTER";
+            extraneousMatter.ComponentType = "OBSERVED_PROPERTY";
+            extraneousMatter.Selector = "A_EXTRANEOUS_MATTER";
+            extraneousMatter.Description = "Extraneous matter is any substance in the cotton other than fiber or leaf.";
+            extraneousMatter.Value = ndbRecord.ExtraneousMatter;
+            extraneousMatter.ValueType = OMCodeComponentValueTypeEnum.String;
+            extraneousMatter.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(extraneousMatter);
 
-            Obs Remarks = new Obs();
-            Remarks.OMSourceId = obsIndex; obsIndex++;
-            Remarks.UoMCode = "USDA-COT-Remarks";
-            Remarks.Value = ndbRecord.Remarks;
-            obsCollection.ObsIds.Add(Remarks.Id.ReferenceId);
-            _obs.Add(Remarks);
-
-            Obs HVIColorGrade = new Obs();
-            HVIColorGrade.OMSourceId = obsIndex; obsIndex++;
-            HVIColorGrade.UoMCode = "USDA-COT-HVIColorGrade";
+            ObsCodeComponent HVIColorGrade = new ObsCodeComponent();
+            HVIColorGrade.ComponentCode = "A_YLD_USDA_1GOSG_HVI_COLOR_GRADE";
+            HVIColorGrade.ComponentType = "OBSERVED_PROPERTY";
+            HVIColorGrade.Selector = "A_HVI_COLOR_GRADE";
+            HVIColorGrade.Description = "The same color grade as the official color grade.";
             HVIColorGrade.Value = ndbRecord.HVIColorGrade;
-            obsCollection.ObsIds.Add(HVIColorGrade.Id.ReferenceId);
-            _obs.Add(HVIColorGrade);
+            HVIColorGrade.ValueType = OMCodeComponentValueTypeEnum.String;
+            HVIColorGrade.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(HVIColorGrade);
 
-            Obs ColorQuadrant = new Obs();
-            ColorQuadrant.OMSourceId = obsIndex; obsIndex++;
-            ColorQuadrant.UoMCode = "USDA-COT-ColorQuadrant";
-            ColorQuadrant.Value = ndbRecord.ColorQuadrant;
-            obsCollection.ObsIds.Add(ColorQuadrant.Id.ReferenceId);
-            _obs.Add(ColorQuadrant);
+            ObsCodeComponent colorQuadrant = new ObsCodeComponent();
+            colorQuadrant.ComponentCode = "A_YLD_USDA_1GOSG_HVI_COLOR_GRADE";
+            colorQuadrant.ComponentType = "OBSERVED_PROPERTY";
+            colorQuadrant.Selector = "A_HVI_COLOR_GRADE";
+            colorQuadrant.Description = "Color grade subdivisions are reported as Color Quadrants.";
+            colorQuadrant.Value = ndbRecord.ColorQuadrant;
+            colorQuadrant.ValueType = OMCodeComponentValueTypeEnum.String;
+            colorQuadrant.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(colorQuadrant);
 
-            Obs RD = new Obs();
-            RD.OMSourceId = obsIndex; obsIndex++;
-            RD.UoMCode = "USDA-COT-Rd";
+            ObsCodeComponent RD = new ObsCodeComponent();
+            RD.ComponentCode = "A_YLD_USDA_1GOSG_REFLECTANCE";
+            RD.ComponentType = "OBSERVED_PROPERTY";
+            RD.Selector = "A_HVI_COLOR_GRADE";
+            RD.Description = "HVI Rd (% reflectance).";
             RD.Value = ndbRecord.RD;
-            obsCollection.ObsIds.Add(RD.Id.ReferenceId);
-            _obs.Add(RD);
+            RD.ValueType = OMCodeComponentValueTypeEnum.String;
+            RD.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(RD);
 
-            Obs B = new Obs();
-            B.OMSourceId = obsIndex; obsIndex++;
-            B.UoMCode = "USDA-COT-b";
+            ObsCodeComponent B = new ObsCodeComponent();
+            B.ComponentCode = "A_YLD_USDA_1GOSG_HVI_YELLOWNESS";
+            B.ComponentType = "OBSERVED_PROPERTY";
+            B.Selector = "A_HVI_YELLOWNESS";
+            B.Description = "HVI +b (yellowness).";
             B.Value = ndbRecord.B;
-            obsCollection.ObsIds.Add(B.Id.ReferenceId);
-            _obs.Add(B);
+            B.ValueType = OMCodeComponentValueTypeEnum.String;
+            B.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(B);
 
-            Obs NonLintContent = new Obs();
-            NonLintContent.OMSourceId = obsIndex; obsIndex++;
-            NonLintContent.UoMCode = "USDA-COT-NonLintContent";
-            NonLintContent.Value = ndbRecord.NonLintContent;
-            obsCollection.ObsIds.Add(NonLintContent.Id.ReferenceId);
-            _obs.Add(NonLintContent);
+            ObsCodeComponent nonLintContent = new ObsCodeComponent();
+            nonLintContent.ComponentCode = "A_YLD_USDA_1GOSG_TRASH_PERCENT_AREA";
+            nonLintContent.ComponentType = "OBSERVED_PROPERTY";
+            nonLintContent.Selector = "A_TRASH_PERCENT_AREA";
+            nonLintContent.Description = "The percent of the sample surface covered by trash particles as determined by the instrument to the nearest tenth.";
+            nonLintContent.Value = ndbRecord.NonLintContent;
+            nonLintContent.ValueType = OMCodeComponentValueTypeEnum.String;
+            nonLintContent.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(nonLintContent);
 
-            Obs FiberStrength = new Obs();
-            FiberStrength.OMSourceId = obsIndex; obsIndex++;
-            FiberStrength.UoMCode = "USDA-COT-FiberLength";
-            FiberStrength.Value = ndbRecord.FiberLength;
-            obsCollection.ObsIds.Add(FiberStrength.Id.ReferenceId);
-            _obs.Add(FiberStrength);
+            ObsCodeComponent fiberLength = new ObsCodeComponent();
+            fiberLength.ComponentCode = "A_YLD_FIBER_LENGTH";
+            fiberLength.ComponentType = "OBSERVED_PROPERTY";
+            fiberLength.Selector = "A_FIBER_LENGTH";
+            fiberLength.Description = "Fiber length expressed in 100ths of an inch.";
+            fiberLength.Value = ndbRecord.FiberLength;
+            fiberLength.ValueType = OMCodeComponentValueTypeEnum.String;
+            fiberLength.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(fiberLength);
 
-            Obs LengthUniformity = new Obs();
-            LengthUniformity.OMSourceId = obsIndex; obsIndex++;
-            LengthUniformity.UoMCode = "USDA-COT-LengthUniformityIndex";
-            LengthUniformity.Value = ndbRecord.LengthUniformity;
-            obsCollection.ObsIds.Add(LengthUniformity.Id.ReferenceId);
-            _obs.Add(LengthUniformity);
+            ObsCodeComponent lengthUniformity = new ObsCodeComponent();
+            lengthUniformity.ComponentCode = "A_YLD_USDA_1GOSG_LENGTH_UNIFORMITY_INDEX";
+            lengthUniformity.ComponentType = "OBSERVED_PROPERTY";
+            lengthUniformity.Selector = "A_LENGTH_UNIFORMITY_INDEX";
+            lengthUniformity.Description = "The ratio between the mean length and the upperhalf mean length of the fibers, expressed as a percentage.";
+            lengthUniformity.Value = ndbRecord.LengthUniformity;
+            lengthUniformity.ValueType = OMCodeComponentValueTypeEnum.String;
+            lengthUniformity.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(lengthUniformity);
 
-            Obs UplandOrPima = new Obs();
-            UplandOrPima.OMSourceId = obsIndex; obsIndex++;
-            UplandOrPima.UoMCode = "USDA-COT-UplandPima";
-            UplandOrPima.Value = ndbRecord.UplandOrPima;
-            obsCollection.ObsIds.Add(UplandOrPima.Id.ReferenceId);
-            _obs.Add(UplandOrPima);
+            ObsCodeComponent UplandOrPima = new ObsCodeComponent();
+            UplandOrPima.ComponentCode = "CC_FOI_CROP";
+            UplandOrPima.ComponentType = "FEATURE_OF_INTEREST";
+            UplandOrPima.Selector = "CROP";
+            UplandOrPima.Description = "The ratio between the mean length and the upperhalf mean length of the fibers, expressed as a percentage.";
+            
+            if(ndbRecord.UplandOrPima == "1")
+            {
+                UplandOrPima.Value = "GOSHI";
+            }
+            else
+            {
+                UplandOrPima.Value = "GOSBA";
+            }
 
-            Obs RecordType = new Obs();
-            RecordType.OMSourceId = obsIndex; obsIndex++;
-            RecordType.UoMCode = "USDA-COT-RecordType";
-            RecordType.Value = ndbRecord.RecordType;
-            obsCollection.ObsIds.Add(RecordType.Id.ReferenceId);
-            _obs.Add(RecordType);
-
-            Obs RecordStatus = new Obs();
-            RecordStatus.OMSourceId = obsIndex; obsIndex++;
-            RecordStatus.UoMCode = "USDA-COT-RecordStatus";
-            RecordStatus.Value = ndbRecord.RecordStatus;
-            obsCollection.ObsIds.Add(RecordStatus.Id.ReferenceId);
-            _obs.Add(RecordStatus);
-
-            Obs CCCLoan = new Obs();
-            CCCLoan.OMSourceId = obsIndex; obsIndex++;
-            CCCLoan.UoMCode = "USDA-COT-CCCLoanPremium";
-            CCCLoan.Value = ndbRecord.CCCLoan;
-            obsCollection.ObsIds.Add(CCCLoan.Id.ReferenceId);
-            _obs.Add(CCCLoan);
+            UplandOrPima.ValueType = OMCodeComponentValueTypeEnum.String;
+            UplandOrPima.ValueUoMCode = "";
+            obsCollection.CodeComponents.Add(UplandOrPima);
 
             return obsCollection;
         }
@@ -182,6 +204,26 @@ namespace CottonClassingPlugin.DataMappers
             NumberOfBales.Code = "USDA-COT-NumberOfBales";
             NumberOfBales.Value = ndbRecord.NumberOfBales;
             record.NestedItems.Add(NumberOfBales);
+
+            ContextItem remarks = new ContextItem();
+            remarks.Code = "US_USDA_1GOSG_REMARKS";
+            remarks.Value = ndbRecord.Remarks;
+            record.NestedItems.Add(remarks);
+
+            ContextItem recordType = new ContextItem();
+            recordType.Code = "US_USDA_1GOSG_RECORD_TYPE";
+            recordType.Value = ndbRecord.RecordType;
+            record.NestedItems.Add(recordType);
+
+            ContextItem recordStatus = new ContextItem();
+            recordStatus.Code = "US_USDA_1GOSG_RECORD_STATUS";
+            recordStatus.Value = ndbRecord.RecordStatus;
+            record.NestedItems.Add(recordStatus);
+
+            ContextItem CCCLoan = new ContextItem();
+            CCCLoan.Code = "US_USDA_1GOSG_LOAN_PREMIUM";
+            CCCLoan.Value = ndbRecord.CCCLoan;
+            record.NestedItems.Add(CCCLoan);
 
             load.ContextItems.Add(record);
 

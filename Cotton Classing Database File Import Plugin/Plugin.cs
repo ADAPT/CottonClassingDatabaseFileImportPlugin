@@ -17,36 +17,40 @@ namespace CottonClassingPlugin
         public IList<IError> Errors => throw new NotImplementedException();
 
         /// <summary>
-        /// ATTENTION!: This method is for testing locally within your debugger, and is called from the ExampleDataImporter Main method
+        /// ATTENTION!: This method is for testing locally within your debugger, and is called from the DataImporter Main method
         /// </summary>
-        /// <returns></returns>
-        public IList<ApplicationDataModel> RunPlugin()
+        public IList<ApplicationDataModel> RunPlugin(string dataPath)
         {
             //A plugin publisher can choose to create one or multiple application data models as appropriate for the data
             IList<ApplicationDataModel> admList = new List<ApplicationDataModel>();
             ApplicationDataModel adm = new ApplicationDataModel();
-            
-            string dataPath = @"D:\Odrive\OneDrive For Business - OAGi\AgGateway\ADAPT\Cotton Classing Database File Import Plugin\Cotton Classing Database File Import Plugin\PublisherDataModel\ExampleData";
-            //Find any data files in the defined path
-            string[] myDataFiles = Directory.GetFiles(dataPath, "USDA-Cotton Flat File.txt", SearchOption.AllDirectories);
-            if (myDataFiles.Any())
+            try
             {
-                foreach (string myDataFile in myDataFiles)
+                //Find any data files in the defined path
+                string[] myDataFiles = Directory.GetFiles(dataPath, "USDA-Cotton Flat File.txt", SearchOption.AllDirectories);
+                if (myDataFiles.Any())
                 {
-                    //Import each file
-                    PublisherDataModel.Data data = new PublisherDataModel.Data();
-                    data.NDBData = PublisherDataModel.FlatFileHelper.ConvertFlatFileToModel(File.ReadAllText(myDataFile, System.Text.Encoding.Default));
+                    foreach (string myDataFile in myDataFiles)
+                    {
+                        //Import each file
+                        PublisherDataModel.Data data = new PublisherDataModel.Data();
+                        data.NDBData = PublisherDataModel.FlatFileHelper.ConvertFlatFileToModel(File.ReadAllText(myDataFile, System.Text.Encoding.Default));
 
-                    #region JSON code
-                    //string myJson = PublisherDataModel.FlatFileHelper.ConvertFlatFileToJSON(File.ReadAllText(myDataFile, System.Text.Encoding.Default));
-                    //var jObject = Newtonsoft.Json.Linq.JObject.Parse(myJson);
-                    //data.NDBData = JsonConvert.DeserializeObject<PublisherDataModel.Data>(jObject.ToString());
-                    #endregion
+                        #region JSON code
+                        //string myJson = PublisherDataModel.FlatFileHelper.ConvertFlatFileToJSON(File.ReadAllText(myDataFile, System.Text.Encoding.Default));
+                        //var jObject = Newtonsoft.Json.Linq.JObject.Parse(myJson);
+                        //data.NDBData = JsonConvert.DeserializeObject<PublisherDataModel.Data>(jObject.ToString());
+                        #endregion
 
-                    DataMappers.DataMapper.MapData(data, adm);
+                        DataMappers.DataMapper.MapData(data, adm);
+                    }
+
+                    admList.Add(adm);
                 }
-
-                admList.Add(adm);
+            }
+            catch (System.Exception ex)
+            {
+                //Log error here if desired
             }
 
             return admList;
@@ -55,24 +59,29 @@ namespace CottonClassingPlugin
         IList<ApplicationDataModel> IPlugin.Import(string dataPath, Properties properties)
         {
             IList<ApplicationDataModel> models = new List<ApplicationDataModel>();
+            ApplicationDataModel adm = new ApplicationDataModel();
 
-            //Find any data files in the defined path
-            string[] myDataFiles = Directory.GetFiles(dataPath, "USDA-Cotton Flat File.txt", SearchOption.AllDirectories);
-            if (myDataFiles.Any())
+            try
             {
-                //A plugin publisher can choose to create one or multiple application data models as appropriate for the data
-                ApplicationDataModel adm = new ApplicationDataModel();
-                adm.Catalog = new Catalog() { Description = $"ADAPT data transformation of Publisher data {DateTime.Now.ToShortDateString()} {dataPath}" };
-                //var loads = new List<AgGateway.ADAPT.ApplicationDataModel.LoggedData.Load>();
-                models.Add(adm);
-
-                foreach (string myDataFile in myDataFiles)
+                //Find any data files in the defined path
+                string[] myDataFiles = Directory.GetFiles(dataPath, "USDA-Cotton Flat File.txt", SearchOption.TopDirectoryOnly);
+                if (myDataFiles.Any())
                 {
-                    //Import each file
-                    PublisherDataModel.Data data = new PublisherDataModel.Data();
-                    data.NDBData = PublisherDataModel.FlatFileHelper.ConvertFlatFileToModel(File.ReadAllText(myDataFile, System.Text.Encoding.Default));
-                    DataMappers.DataMapper.MapData(data, adm);
+                    adm.Catalog = new Catalog() { Description = $"ADAPT data transformation of Publisher data {DateTime.Now.ToShortDateString()} {dataPath}" };
+                    models.Add(adm);
+
+                    foreach (string myDataFile in myDataFiles)
+                    {
+                        //Import each file
+                        PublisherDataModel.Data data = new PublisherDataModel.Data();
+                        data.NDBData = PublisherDataModel.FlatFileHelper.ConvertFlatFileToModel(File.ReadAllText(myDataFile, System.Text.Encoding.Default));
+                        DataMappers.DataMapper.MapData(data, adm);
+                    }
                 }
+            }
+            catch (System.Exception ex)
+            {
+                //Log error here if desired
             }
 
             return models;           

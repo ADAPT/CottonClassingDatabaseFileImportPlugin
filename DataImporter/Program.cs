@@ -1,5 +1,4 @@
 ﻿using System;
-using CottonClassingPlugin.PublisherDataModel.ExampleData;
 
 namespace DataImporter
 {
@@ -19,7 +18,7 @@ namespace DataImporter
             string dataPath = @"C:\Projects\OAGi\ADAPT\USDA";
 
             //Call the RunPlugin method, passing in the path to your test data file
-            plugin.RunPlugin();
+            plugin.RunPlugin(dataPath);
         }
     }
 }
