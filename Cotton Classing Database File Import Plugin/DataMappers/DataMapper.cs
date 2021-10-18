@@ -29,7 +29,7 @@ namespace CottonClassingPlugin.DataMappers
             var loads = new List<AgGateway.ADAPT.ApplicationDataModel.LoggedData.Load>();
             var myOobsCollections = new List<AgGateway.ADAPT.ApplicationDataModel.Documents.ObsCollection>();
             var obs = new List<AgGateway.ADAPT.ApplicationDataModel.Documents.Obs>();
-
+            
             //Import the NDB Records
             foreach (NDBRecord ndb in myDataModel.NDBData.NDBRecords)
             {
