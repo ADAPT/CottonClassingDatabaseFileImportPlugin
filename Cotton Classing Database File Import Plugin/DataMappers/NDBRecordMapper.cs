@@ -24,6 +24,7 @@ namespace CottonClassingPlugin.DataMappers
             obsCollection.TimeScopes.Add(phenTime);
 
             Obs colorGrade = new Obs();
+            colorGrade.TimeScopes.Add(phenTime);
             colorGrade.OMCode = "A_YLD_USDA_1GOSG_OFFICIAL_COLOR_GRADE";
             colorGrade.Value = ndbRecord.OfficialColorGrade;
             colorGrade.UoMCode = "";
@@ -31,6 +32,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(colorGrade);
 
             Obs stapleLength = new Obs();
+            stapleLength.TimeScopes.Add(phenTime);
             stapleLength.OMCode = "A_YLD_USDA_1GOSG_STAPLE_LENGTH";
             stapleLength.Value = ndbRecord.StapleLength;
             stapleLength.UoMCode = "";
@@ -38,6 +40,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(stapleLength);
 
             Obs micronaire = new Obs();
+            micronaire.TimeScopes.Add(phenTime);
             micronaire.OMCode = "A_YLD_USDA_1GOSG_MICRONAIRE";
             micronaire.Value = ndbRecord.StapleLength;
             micronaire.UoMCode = "";
@@ -45,6 +48,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(micronaire);
 
             Obs strength = new Obs();
+            strength.TimeScopes.Add(phenTime);
             strength.OMCode = "A_YLD_USDA_1GOSG_STRENGTH";
             strength.Value = ndbRecord.StapleLength;
             strength.UoMCode = "";
@@ -52,6 +56,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(strength);
 
             Obs leafGrade = new Obs();
+            leafGrade.TimeScopes.Add(phenTime);
             leafGrade.OMCode = "A_YLD_USDA_1GOSG_LEAF_GRADE";
             leafGrade.Value = ndbRecord.LeafGrade;
             leafGrade.UoMCode = "";
@@ -59,6 +64,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(leafGrade);
 
             Obs extraneousMatter = new Obs();
+            extraneousMatter.TimeScopes.Add(phenTime);
             extraneousMatter.OMCode = "A_YLD_USDA_1GOSG_EXTRANEOUS_MATTER";
             extraneousMatter.Value = ndbRecord.ExtraneousMatter;
             extraneousMatter.UoMCode = "";
@@ -66,6 +72,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(extraneousMatter);
 
             Obs HVIColorGrade = new Obs();
+            HVIColorGrade.TimeScopes.Add(phenTime);
             HVIColorGrade.OMCode = "A_YLD_USDA_1GOSG_EXTRANEOUS_MATTER";
             HVIColorGrade.Value = ndbRecord.HVIColorGrade;
             HVIColorGrade.UoMCode = "";
@@ -73,6 +80,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(HVIColorGrade);
 
             Obs colorQuadrant = new Obs();
+            colorQuadrant.TimeScopes.Add(phenTime);
             colorQuadrant.OMCode = "A_YLD_USDA_1GOSG_EXTRANEOUS_MATTER";
             colorQuadrant.Value = ndbRecord.ColorQuadrant;
             colorQuadrant.UoMCode = "";
@@ -80,6 +88,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(colorQuadrant);
 
             Obs rd = new Obs();
+            rd.TimeScopes.Add(phenTime);
             rd.OMCode = "A_YLD_USDA_1GOSG_HVI_REFLECTANCE";
             rd.Value = ndbRecord.RD;
             rd.UoMCode = "";
@@ -87,6 +96,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(rd);
 
             Obs B = new Obs();
+            B.TimeScopes.Add(phenTime);
             B.OMCode = "A_YLD_USDA_1GOSG_HVI_YELLOWNESS";
             B.Value = ndbRecord.B;
             B.UoMCode = "";
@@ -94,6 +104,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(B);
 
             Obs nonLintContent = new Obs();
+            nonLintContent.TimeScopes.Add(phenTime);
             nonLintContent.OMCode = "A_YLD_USDA_1GOSG_TRASH_PERCENT_AREA";
             nonLintContent.Value = ndbRecord.NonLintContent;
             nonLintContent.UoMCode = "";
@@ -101,6 +112,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(nonLintContent);
 
             Obs fiberLength = new Obs();
+            fiberLength.TimeScopes.Add(phenTime);
             fiberLength.OMCode = "A_YLD_FIBER_LENGTH";
             fiberLength.Value = ndbRecord.FiberLength;
             fiberLength.UoMCode = "";
@@ -108,6 +120,7 @@ namespace CottonClassingPlugin.DataMappers
             _obs.Add(fiberLength);
 
             Obs lengthUniformity = new Obs();
+            lengthUniformity.TimeScopes.Add(phenTime);
             lengthUniformity.OMCode = "A_YLD_USDA_1GOSG_LENGTH_UNIFORMITY_INDEX";
             lengthUniformity.Value = ndbRecord.LengthUniformity;
             lengthUniformity.UoMCode = "";
@@ -134,6 +147,7 @@ namespace CottonClassingPlugin.DataMappers
             obsCollection.CodeComponents.Add(UplandOrPima);
 
             Obs remarks = new Obs();
+            remarks.TimeScopes.Add(phenTime);
             remarks.OMCode = "US_USDA_1GOSG_REMARKS";
             remarks.Value = ndbRecord.Remarks;
             remarks.UoMCode = "";
