@@ -42,7 +42,7 @@ namespace CottonClassingPlugin.DataMappers
             Obs micronaire = new Obs();
             micronaire.TimeScopes.Add(phenTime);
             micronaire.OMCode = "A_YLD_USDA_1GOSG_MICRONAIRE";
-            micronaire.Value = ndbRecord.StapleLength;
+            micronaire.Value = ndbRecord.Micronaire;
             micronaire.UoMCode = "";
             obsCollection.ObsIds.Add(micronaire.Id.ReferenceId);
             _obs.Add(micronaire);
@@ -50,7 +50,7 @@ namespace CottonClassingPlugin.DataMappers
             Obs strength = new Obs();
             strength.TimeScopes.Add(phenTime);
             strength.OMCode = "A_YLD_USDA_1GOSG_STRENGTH";
-            strength.Value = ndbRecord.StapleLength;
+            strength.Value = ndbRecord.Strength;
             strength.UoMCode = "";
             obsCollection.ObsIds.Add(strength.Id.ReferenceId);
             _obs.Add(strength);
@@ -73,7 +73,7 @@ namespace CottonClassingPlugin.DataMappers
 
             Obs HVIColorGrade = new Obs();
             HVIColorGrade.TimeScopes.Add(phenTime);
-            HVIColorGrade.OMCode = "A_YLD_USDA_1GOSG_EXTRANEOUS_MATTER";
+            HVIColorGrade.OMCode = "A_YLD_USDA_1GOSG_HVI_COLOR_GRADE";
             HVIColorGrade.Value = ndbRecord.HVIColorGrade;
             HVIColorGrade.UoMCode = "";
             obsCollection.ObsIds.Add(HVIColorGrade.Id.ReferenceId);
@@ -81,7 +81,7 @@ namespace CottonClassingPlugin.DataMappers
 
             Obs colorQuadrant = new Obs();
             colorQuadrant.TimeScopes.Add(phenTime);
-            colorQuadrant.OMCode = "A_YLD_USDA_1GOSG_EXTRANEOUS_MATTER";
+            colorQuadrant.OMCode = "A_YLD_USDA_1GOSG_HVI_COLOR_QUADRANT";
             colorQuadrant.Value = ndbRecord.ColorQuadrant;
             colorQuadrant.UoMCode = "";
             obsCollection.ObsIds.Add(colorQuadrant.Id.ReferenceId);
@@ -204,36 +204,36 @@ namespace CottonClassingPlugin.DataMappers
         {
             //Transform the native object into the ADAPT object
             ContextItem record = new ContextItem();
-            record.Code = "USDA-COT-NDB";
+            record.Code = "US_USDA-COT-NDB";
 
             //Transform the native object into the ADAPT object
             ContextItem GINCode = new ContextItem();
-            GINCode.Code = "USDA-COT-GinCode";
+            GINCode.Code = "US_USDA-COT-GinCode";
             GINCode.Value = ndbRecord.GINCode;
             record.NestedItems.Add(GINCode);
 
             ContextItem GINBale = new ContextItem();
-            GINBale.Code = "USDA-COT-GinBaleID";
+            GINBale.Code = "US_USDA-COT-GinBaleID";
             GINBale.Value = ndbRecord.GINBale;
             record.NestedItems.Add(GINBale);
 
             ContextItem DateClassed = new ContextItem();
-            DateClassed.Code = "USDA-COT-DateClassed";
+            DateClassed.Code = "US_USDA-COT-DateClassed";
             DateClassed.Value = ndbRecord.DateClassed;
             record.NestedItems.Add(DateClassed);
 
             ContextItem ReportingBasis = new ContextItem();
-            ReportingBasis.Code = "USDA-COT-ReportingBasis";
+            ReportingBasis.Code = "US_USDA-COT-ReportingBasis";
             ReportingBasis.Value = ndbRecord.ReportingBasis;
             record.NestedItems.Add(ReportingBasis);
 
             ContextItem ModuleTrailerNumber = new ContextItem();
-            ModuleTrailerNumber.Code = "USDA-COT-ModuleTrailerNumber";
+            ModuleTrailerNumber.Code = "US_USDA-COT-ModuleTrailerNumber";
             ModuleTrailerNumber.Value = ndbRecord.ModuleTrailerNumber;
             record.NestedItems.Add(ModuleTrailerNumber);
 
             ContextItem NumberOfBales = new ContextItem();
-            NumberOfBales.Code = "USDA-COT-NumberOfBales";
+            NumberOfBales.Code = "US_USDA-COT-NumberOfBales";
             NumberOfBales.Value = ndbRecord.NumberOfBales;
             record.NestedItems.Add(NumberOfBales);
 
